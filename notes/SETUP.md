@@ -2,7 +2,16 @@
 Bash
 - ps auxww | grep ruby
 - rake db:drop; rake db:create; rake db:migrate; shotgun
-
+------------------------------------------------
+Git
+- git init
+- git add .
+- git status
+- git branch experiment
+- git checkout experiment
+- git push origin experiment
+- git checkout master
+- git merge experiment
 ------------------------------------------------
 # Requirements
 - A page that lists all the categories
