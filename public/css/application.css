@@ -2,13 +2,32 @@
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+
+
+
 }
 
 th {
   text-align: left;
 }
 
+header {
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: whitesmoke; 
+}
+
+header h4 {
+  padding-left: 10px;
+}
+
+header h2 {
+  padding: 10px;
+}
+
+header p {
+  float: right;
+}
 
 body {
   padding-top: 40px;
@@ -36,6 +55,7 @@ body {
 }
 .form-signin input[type="text"],
 .form-signin input[type="password"] {
+  width: 50px;
   font-size: 16px;
   height: auto;
   margin-bottom: 15px;

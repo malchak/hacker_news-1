@@ -3,10 +3,9 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.string :title
       t.string :url
-      t.string :content
       t.references :user
       t.timestamps
     end
-    add_index :posts, [:user_id]
+    add_index :posts, [:user_id] #optimizes line 6
   end
 end

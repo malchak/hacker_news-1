@@ -1,12 +1,12 @@
-class User < ActiveRecord::Base
+  class User < ActiveRecord::Base
   has_many :comments
   has_many :posts
 
-  validates :username, :email, :password, :presence => true
-  validates :username, :email, :uniqueness => true
-  validate :valid_email
+  validates :name, :password, :presence => true
+  validates :name, :uniqueness => true
+  
   validate :password_length
-  validate :username_length
+  validate :name_length
 
   include BCrypt
 
@@ -19,22 +19,40 @@ class User < ActiveRecord::Base
     self.password_hash = @password
   end
   
-  def valid_email
-    unless email =~ /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/
-      errors.add(:email, "WEAKSAUCE, this is not a valid email")
-    end
-  end
 
-  def username_length
-    unless username.length > 3
-      errors.add(:username, "Username doesn't have enough characters.")
+  def name_length
+    unless name.length > 3
+      errors.add(:name, "doesn't have enough characters.")
     end
   end
 
   def password_length
     unless password.length > 6
-      errors.add(:password, "Password doesn't have enough characters.")
+      errors.add(:password, "doesn't have enough characters.")
     end
+  end
+
+   def time_ago
+    time = (Time.now - self.created_at) 
+    if time > 86400
+      "#{time.to_i/86400} days ago"
+    elsif time > 7200
+      "#{time.to_i/3600} hours ago"
+    elsif time > 3600
+      "#{time.to_i/3600} hour ago"
+    elsif time > 60
+      "#{time.to_i/60} minutes ago"
+    else 
+      "just now"
+    end
+  end
+
+  def karma
+    posts = Post.find_by_user_id(self.id).count
+    comments = Comment.find_by_user_id(self.id).count
+    post_votes = PostVote.find_by_user_id(self.id).count
+    comment_votes = CommentVote.find_by_user_id(self.id).count
+    posts + comments + post_votes + comment_votes
   end
   
 end

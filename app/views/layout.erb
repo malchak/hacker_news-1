@@ -12,7 +12,15 @@
   <title></title>
 </head>
 <body>
-
+  <header>
+    <h2><a href="/">News Qwacka</a></h2>
+   <% if current_user %>
+      <h4 class ="log_in_header">Welcome, <a href="/users/<%=current_user.name%>"><%=current_user.name%> </a>!</h4>
+      <p class ="log_in_header"> <a href="/log_out">log out</a> </p>
+    <% else %>
+      <p class ="log_in_header"> <a href="/log_sign">log in / sign up</a> </p>
+      <% end %>
+  </header>
   <div class="container">
     <%= yield %>
   </div>

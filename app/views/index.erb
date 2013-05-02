@@ -1,6 +1,14 @@
 
-  <h1>Welcome to Sinatra!</h1>
-
-
-
+<hr>
+<ol class="posts">
+    <% @all_posts.each do |post| %> 
+  <li> 
+       <a href="<%= post.url %>"><%= post.clean_title %></a> (<%= post.url_snippet %>)
+      <br>
+      <div class="byline"><%= post.vote_count %> |created by <a href="/users/<%= post.author %>"><%= post.author %></a> <%=post.time_ago%> | <a href="posts/<%=post.id%>"><%= post.comment_count %></a>  </div>
+      <br>
+    
+  </li>
+  <% end %>
+</ol>
 

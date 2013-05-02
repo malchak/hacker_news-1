@@ -1,0 +1,30 @@
+<script>
+$(document).ready(function(){
+  $('.log_in_header').hide();
+});
+</script>
+<div class="container">  
+
+  <br>
+  <p><%= @error %><%= @errors %></p>
+  <br>
+  <% session[:referrer] = request.referrer %>
+  <form method="post" action="/sign_up">
+    <input type="text" placeholder="name" name="user[name]">
+    <input type="password" placeholder="password" name="user[password]">
+    <br>
+    <input type="submit" value="sign up">
+
+  </form>
+
+
+  <br>
+  <% session[:referrer] = request.referrer %>
+  <form method="post" action="/log_in">
+    <input type="text" placeholder="name" name="user[name]">
+    <input type="password" placeholder="password" name="user[password]">
+    <br>
+    <input type="submit" value="log in">
+  </form>
+
+</div>

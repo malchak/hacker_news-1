@@ -1,0 +1,23 @@
+<h4><a href="<%=@post.url %>"><%= @post.clean_title %> </a> <span style="font-size:65%">(<%= @post.url_snippet %>)</span></h4>
+
+
+  <br>
+  <div class="byline"><%= @post.vote_count %> | created by <a href="/users/<%= @post.author %>"><%= @post.author %></a> <%=@post.time_ago%></div>
+  <br>
+
+
+  <form id="comment_form" method="post" action="/new_comment">
+    <textarea id="content"></textarea>
+    <input id="post_id" type="hidden"  value="<%=@post.id%>">
+    <input id="user_id" type="hidden"  value="<%=current_user.id%>">
+    <br>
+    <input type="submit" value="add comment">
+  <br>
+    <ul>
+      <% @all_comments.each do |comment| %>
+      <li>
+      <%= comment.author.name %> <%=comment.content%> <%=comment.time_ago %>
+      </li>
+    <% end %>
+    </ul>
+  </form>

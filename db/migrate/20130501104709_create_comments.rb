@@ -6,6 +6,6 @@ class CreateComments < ActiveRecord::Migration
       t.references :post
       t.timestamps
     end
-    add_index :comments, [:user_id, :post_id]
+    add_index :comments, [:user_id, :post_id] #optimizes line 6 and 7
   end
 end

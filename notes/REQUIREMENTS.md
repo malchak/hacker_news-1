@@ -2,7 +2,7 @@
 Profile
 --------
 Display
- - username
+ - name
  - create_at
  - email
 Link
@@ -11,7 +11,7 @@ Link
 Action
  - update password
  - update email
- - update username
+ - update name
 Routes
  - /user/:id
 
